@@ -23,9 +23,6 @@ Sub CalculateStockChanges()
         End If
     Next i
     
-    Range("P1") = "Ticker"
-    Range("Q1") = "Value"
-    
 End Sub
 Sub FillStockChangesTable()
 
@@ -69,9 +66,6 @@ Sub PerIncrease()
     Dim MaxValue As Double
     Dim MaxTicker As String
     
-    Range("O2") = "Greatest % Increase"
-    TRows = Cells(Rows.Count, 11).End(xlUp).Row
-    
     MaxValue = Range("K2").Value
     For i = 2 To TRows
         If Range("K" & i).Value >= MaxValue Then
@@ -89,9 +83,6 @@ Sub PDecrease()
     Dim MinValue As Double
     Dim MInTicker As String
     
-    Range("O3") = "Greatest % Decrease"
-    TRows = Cells(Rows.Count, 11).End(xlUp).Row
-    
     MinValue = Range("K2").Value
     For i = 2 To TRows
         If Range("K" & i).Value <= MinValue Then
@@ -102,24 +93,4 @@ Sub PDecrease()
     
     Range("P3").Value = MInTicker
     Range("Q3").Value = Format(MinValue, "Percent")
-End Sub
-Sub MaxTotalVol()
-    Dim TRows As Long
-    Dim i As Long
-    Dim MaxValue As Double
-    Dim MaxTicker As String
-    
-    Range("O4") = "Greatest Total Volume"
-    TRows = Cells(Rows.Count, 11).End(xlUp).Row
-    
-    MaxValue = Range("L2").Value
-    For i = 2 To TRows
-        If Range("L" & i).Value >= MaxValue Then
-            MaxValue = Range("L" & i).Value
-            MaxTicker = Range("I" & i).Value
-        End If
-    Next i
-    
-    Range("P4").Value = MaxTicker
-    Range("Q4").Value = MaxValue
 End Sub
